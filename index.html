@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Himalyan Vista Trips</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Pacifico&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <!-- Navbar Section -->
+      <nav class="navbar">
+        <div class="nav-container">
+          <a href="#" class="nav-logo">
+            <img
+              src="Images/logo.png"
+              alt="Himalayan Vista Logo"
+              class="logo-img"
+            />
+            <span>Himalayan Vista Trips</span>
+          </a>
+
+          <button class="nav-toggle" aria-label="Toggle navigation">
+            <span class="hamburger"></span>
+          </button>
+
+          <ul class="nav-menu">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Featured Destinations</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Why Choose Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <!-- Background Slideshow -->
+        <div class="hero-slideshow">
+          <div
+            class="slide active"
+            style="background-image: url('Images/mountain-bg.jpg')"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('Images/Beach-bg.jpg')"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('Images/desert-bg.jpg')"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('Images/leh-bg.jpg')"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('Images/golden-temple-bg.jpg')"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('Images/palace-bg.jpg')"
+          ></div>
+          <div
+            class="slide"
+            style="background-image: url('Images/forest-bg.jpg')"
+          ></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+          <h1 class="hero-title animate-slide">Himalayan Vista Trips</h1>
+          <div class="hero-text-container">
+            <p
+              class="hero-subtitle animate-slide"
+              style="animation-delay: 0.2s"
+            >
+              Yatra Devāḥ Sthitāḥ Purā
+            </p>
+            <p class="hero-text animate-slide" style="animation-delay: 0.4s">
+              The mountain's breath, the desert's sigh,<br />
+              Gold sands and glaciers 'neath one sky
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="about-content">
+          <h2 class="about-title animate-slide">About Himalayan Vista Trips</h2>
+          <p class="about-text animate-slide" style="animation-delay: 0.1s">
+            Founded in the foothills of the majestic Himalayas, Himalayan Vista
+            Trips was born from a deep passion for nature's wonders and cultural
+            heritage. We've been crafting unforgettable journeys since 2023,
+            blending adventure with authenticity.
+          </p>
+          <p class="about-text animate-slide" style="animation-delay: 0.2s">
+            Our expert team of local guides and travel enthusiasts are dedicated
+            to creating experiences that connect you with the soul of each
+            destination - from snow-capped peaks to golden deserts, ancient
+            forests to pristine beaches.
+          </p>
+        <div class="about-collage">
+          <div class="collage-grid">
+            <div class="collage-item">
+              <img
+                src="Images/skiing-collage.jpg"
+                alt="ski"
+                class="collage-img"
+              />
+            </div>
+            <div class="collage-item">
+              <img
+                src="Images/river-rafting.jpg"
+                alt="river-rafting"
+                class="collage-img"
+              />
+            </div>
+            <div class="collage-item">
+              <img
+                src="Images/hot-air-balloon-collage.jpg"
+                alt="Hot air Balloon"
+                class="collage-img"
+              />
+            </div>
+            <div class="collage-item">
+              <img
+                src="Images/ATV-collage.jpg"
+                alt="Bike"
+                class="collage-img"
+              />
+            </div>
+            
+            <div class="collage-item">
+              <img
+                src="Images/trekking-collage.jpg"
+                alt="trekk"
+                class="collage-img"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Navbar toggle
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.querySelector(".nav-menu");
+  toggle.addEventListener("click", function () {
+    menu.classList.toggle("active");
+    this.classList.toggle("active");
+  });
+
+  // Navbar scroll effect
+  const navbar = document.querySelector(".navbar");
+  window.addEventListener("scroll", function () {
+    navbar.classList.toggle("scrolled", window.scrollY > 10);
+  });
+  navbar.classList.toggle("scrolled", window.scrollY > 10);
+
+  // Slideshow
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+  setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }, 5000);
+
+  // Collage animations
+  const collageItems = document.querySelectorAll(".collage-item");
+  collageItems.forEach((item, i) => {
+    setTimeout(() => {
+      item.classList.add("animate");
+    }, i * 100);
+  });
+});
+
+    </script>
+  </body>
+</html>
