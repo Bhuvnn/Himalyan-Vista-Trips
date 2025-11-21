@@ -792,6 +792,7 @@ body {
 }
 
 /* ===== Precious Memories Section ===== */
+/* ===== Precious Memories Section ===== */
 .memories {
   padding: var(--space-xxl) var(--space-md);
   background: linear-gradient(135deg,
@@ -800,7 +801,6 @@ body {
       rgba(245, 245, 245, 0.95) 50%,
       rgba(227, 176, 75, 0.08) 75%,
       rgba(227, 176, 75, 0.05) 100%);
-
   position: relative;
   overflow: hidden;
 }
@@ -825,6 +825,8 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
+  width: 100%;
+  padding: 0 var(--space-md);
 }
 
 .memories-title {
@@ -873,6 +875,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
   transform: translateY(0);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  width: 100%;
 }
 
 .memories-slideshow:hover {
@@ -885,6 +888,7 @@ body {
 
 .memories-track {
   position: relative;
+  width: 100%;
   height: 500px;
   overflow: hidden;
 }
@@ -910,6 +914,7 @@ body {
   height: 100%;
   object-fit: cover;
   transition: transform 8s ease;
+  display: block;
 }
 
 .memories-slide.active .memories-img {
@@ -1371,21 +1376,17 @@ body {
 
   .hero {
     min-height: 400px;
-    /* Shorter on mobile */
     padding-top: 60px;
-    /* Smaller navbar offset */
   }
 
   .slide {
     animation: kenburns-mobile 12s infinite;
-    /* Simpler animation */
   }
 
   @keyframes kenburns-mobile {
     0% {
       transform: scale(1);
     }
-
     100% {
       transform: scale(1.03);
     }
@@ -1397,11 +1398,12 @@ body {
 
   .hero-text-container {
     padding: var(--space-md);
+    width: 95%;
   }
 
   .hero-text-container::before {
-    backdrop-filter: blur(100%);
-    -webkit-backdrop-filter: blur(100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .hero-title {
@@ -1417,8 +1419,14 @@ body {
     padding: var(--space-xs);
   }
 
+  /* Fixed Memories Section */
   .memories-track {
     height: 400px;
+  }
+
+  .memories-slideshow {
+    margin: 0 auto;
+    width: 95%;
   }
 
   .features-grid {
@@ -1434,7 +1442,8 @@ body {
     width: 70px;
     height: 70px;
   }
-    .contact-img {
+
+  .contact-img {
     height: 300px;
   }
   
@@ -1472,15 +1481,25 @@ body {
 
   .animate-slide {
     transform: translateY(15px);
-    /* Smaller entrance on mobile */
   }
 
   .about-content {
     padding: var(--space-md);
   }
 
+  /* Fixed Memories Section for Mobile */
   .memories-track {
     height: 300px;
+  }
+
+  .memories-slideshow {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .memories-slideshow:hover {
+    transform: none;
   }
 
   .feature-card {
@@ -1490,7 +1509,8 @@ body {
   .feature-title {
     font-size: 1.3rem;
   }
-    .contact-quote {
+
+  .contact-quote {
     font-size: 1.3rem;
   }
   
@@ -1512,6 +1532,44 @@ body {
   .btn-content {
     text-align: center;
   }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .memories-track {
+    height: 250px;
+  }
+  
+  .hero-text-container {
+    padding: var(--space-sm);
+    width: 100%;
+  }
+  
+  .nav-container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* Prevent horizontal scrolling globally */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure all containers don't exceed viewport */
+.nav-container,
+.hero-content,
+.about,
+.memories-container,
+.why-choose-container,
+.contact-container {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Landscape Mobile Optimization */
