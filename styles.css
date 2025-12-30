@@ -791,6 +791,213 @@ body {
   transform: scale(1.05);
 }
 
+/* ===== Tour Packages Section ===== */
+.tour-packages {
+  padding: var(--space-xxl) var(--space-md);
+  background: linear-gradient(135deg,
+      rgba(227, 176, 75, 0.05) 0%,
+      rgba(245, 245, 245, 0.95) 30%,
+      rgba(42, 92, 84, 0.08) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.tour-packages::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(227, 176, 75, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgba(42, 92, 84, 0.08) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.tour-packages-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tour-packages-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--primary);
+  margin-bottom: var(--space-sm);
+  position: relative;
+}
+
+.tour-packages-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 2px;
+}
+
+.tour-packages-subtitle {
+  font-family: var(--font-main);
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: var(--dark);
+  margin-bottom: var(--space-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.package-card {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  height: 320px;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  background-color: var(--dark);
+}
+
+.package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.package-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.package-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.package-card:hover .package-img {
+  transform: scale(1.05);
+}
+
+.package-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-lg);
+  background: linear-gradient(transparent, rgba(26, 46, 53, 0.95));
+  color: var(--light);
+  transform: translateY(0);
+  transition: all var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.package-card:hover .package-overlay {
+  background: linear-gradient(transparent, rgba(26, 46, 53, 0.98));
+  height: 100%;
+  justify-content: center;
+  padding-bottom: var(--space-xl);
+}
+
+.package-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  color: var(--light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.package-tagline {
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
+  color: var(--secondary);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.package-description {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  margin-bottom: var(--space-sm);
+}
+
+.package-card:hover .package-description {
+  opacity: 1;
+  max-height: 100px;
+  margin-bottom: var(--space-md);
+}
+
+.package-cta {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary);
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  background-color: rgba(227, 176, 75, 0.2);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(227, 176, 75, 0.3);
+  transition: all var(--transition-normal);
+}
+
+.package-card:hover .package-cta {
+  background-color: rgba(227, 176, 75, 0.3);
+  transform: translateX(5px);
+}
+
+.packages-footer {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(42, 92, 84, 0.2);
+}
+
+.packages-note {
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.contact-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.contact-link:hover {
+  color: var(--secondary);
+  border-bottom-color: var(--secondary);
+}
+
 /* ===== Precious Memories Section ===== */
 /* ===== Precious Memories Section ===== */
 .memories {
