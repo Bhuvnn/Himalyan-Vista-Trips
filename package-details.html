@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Package Details | Himalayan Vista Trips</title>
+
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Page Specific -->
+    <link rel="stylesheet" href="package-details.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="Images/logo.png" class="logo-img" />
+                <span>Himalayan Vista Trips</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="details-hero">
+        <div class="details-hero-content">
+            <h1 id="packageTitle"></h1>
+            <p id="packageDuration"></p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <main class="details-main">
+        <div class="container">
+
+            <!-- Overview -->
+            <section class="details-card">
+                <h2>Package Overview</h2>
+                <p id="packageOverview"></p>
+
+                <div class="details-meta">
+                    <div>
+                        <span>Price</span>
+                        <strong id="packagePrice"></strong>
+                    </div>
+                    <div>
+                        <span>Basis</span>
+                        <strong id="packageBasis"></strong>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerary -->
+            <section class="details-card">
+                <h2>Day-wise Itinerary</h2>
+                <div id="itineraryContainer"></div>
+            </section>
+
+            <!-- Inclusions -->
+            <section class="details-card">
+                <h2>Inclusions</h2>
+                <ul id="inclusionsList" class="details-list"></ul>
+            </section>
+
+            <!-- Exclusions -->
+            <section class="details-card">
+                <h2>Exclusions</h2>
+                <ul id="exclusionsList" class="details-list"></ul>
+            </section>
+
+            <!-- CTA Section -->
+            <div class="details-cta">
+                <div class="cta-content">
+                    <h3 class="cta-title">Ready for Your Himalayan Adventure?</h3>
+                    <p class="cta-text">
+                        Book this package now and create unforgettable memories in the majestic Himalayas.
+                    </p>
+                    <a href="index.html#contact" class="cta-button">
+                        <i class="fas fa-calendar-check"></i> Book This Package Now
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+<!-- JS -->
+<script src="package-data.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const params = new URLSearchParams(window.location.search);
+        const packageId = params.get("id");
+
+        const pkg = PACKAGES.find(p => p.id === packageId);
+
+        if (!pkg) {
+            document.body.innerHTML = "<h2 style='text-align:center'>Package not found</h2>";
+            return;
+        }
+
+        /* Header */
+        document.getElementById("packageTitle").textContent = pkg.title;
+        document.getElementById("packageDuration").textContent = pkg.duration;
+        document.getElementById("packagePrice").textContent = pkg.price || "On Request";
+        document.getElementById("packageBasis").textContent = pkg.price_basis || "Per Person";
+
+        /* Itinerary */
+        const itineraryEl = document.getElementById("itineraryContainer");
+
+        pkg.itinerary.forEach(item => {
+            const day = document.createElement("div");
+            day.className = "day-card";
+
+            day.innerHTML = `
+        <h4>${item.day} – ${item.title}</h4>
+        <p>${item.description}</p>
+      `;
+
+            itineraryEl.appendChild(day);
+        });
+
+        /* Inclusions */
+        const inc = document.getElementById("inclusionsList");
+        pkg.inclusions.forEach(text => {
+            const li = document.createElement("li");
+            li.textContent = text;
+            inc.appendChild(li);
+        });
+
+        /* Exclusions */
+        const exc = document.getElementById("exclusionsList");
+        pkg.exclusions.forEach(text => {
+            const li = document.createElement("li");
+            li.textContent = text;
+            exc.appendChild(li);
+        });
+
+    });
+</script>
+
+
+</html>
